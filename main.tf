@@ -62,6 +62,16 @@ data "aws_subnet" "subnet2" {
  availability_zone = "us-east-1b"
 }
 
+data "aws_subnet" "subnet3" {
+ vpc_id = data.aws_vpc.default.id
+ availability_zone = "us-east-1c"
+}
+
+data "aws_subnet" "subnet4" {
+ vpc_id = data.aws_vpc.default.id
+ availability_zone = "us-east-1d"
+}
+
 resource "aws_lb_target_group" "target-group" {
     health_check {
         interval = 10
