@@ -96,6 +96,11 @@ data "aws_subnet" "subnet2" {
  availability_zone = "us-east-1b"
 }
 
+data "aws_subnet" "subnet2" {
+ vpc_id = data.aws_vpc.default.id
+ availability_zone = "us-east-1c"
+}
+
 # Creating our EC2 instances as the target 
 
 resource "aws_lb_target_group" "target-group" {
