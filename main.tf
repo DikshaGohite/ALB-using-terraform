@@ -27,7 +27,7 @@ resource "aws_security_group" "my_SG" {
 
 resource "aws_instance" "my_ec2" {
     
-    ami             = "ami-01cc34ab2709337aa"
+    ami             = "****************"
     instance_type   = "t2.micro"
     count           = 2
     security_groups = ["${aws_security_group.my_SG.name}"]
@@ -79,7 +79,7 @@ resource "aws_lb_target_group" "target-group" {
     vpc_id = data.aws_vpc.default.id
 }
 
-############# Creating Application Load Balancer #############
+# Creating Application Load Balancer
 
 resource "aws_lb" "my_alb" {
     name            = "ec2-alb"
@@ -96,7 +96,7 @@ resource "aws_lb" "my_alb" {
     }
 }
  
-######################## Creating Listener ######################
+# Creating Listener
 
 resource "aws_lb_listener" "alb-listener" {
     load_balancer_arn          = aws_lb.my_alb.arn
@@ -108,7 +108,7 @@ resource "aws_lb_listener" "alb-listener" {
     }
 }	
 
-################ Attaching Target group to ALB ################
+# Attaching ALB and Target group
 
 resource "aws_lb_target_group_attachment" "ec2_and_tg_attach" {
     count = length(aws_instance.my_ec2)
