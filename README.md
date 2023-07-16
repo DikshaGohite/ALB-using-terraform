@@ -101,7 +101,7 @@ data "aws_subnet" "subnet2" {
  availability_zone = "us-east-1c"
 }
 
-# Creating our EC2 instances as the target 
+# Registering our EC2 instances as the target 
 
 resource "aws_lb_target_group" "target-group" {
 
@@ -124,7 +124,7 @@ resource "aws_lb_target_group" "target-group" {
 ![](3.PNG)
 
  
-# Creating Listener
+# Creating Listener on port 80
 
 resource "aws_lb_listener" "alb-listener" {
 
